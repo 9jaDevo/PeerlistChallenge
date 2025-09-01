@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { LiquidSheetTransition } from "../../components/transition/LiquidSheetTransition";
-import { FadeIn } from "../../components/motion/Primitives";
-import { useStore, useIsDay3Complete } from "../../lib/store";
+import { useIsDay3Complete } from "../../lib/store";
 
 export default function Day3Page() {
   const isDay3Complete = useIsDay3Complete();

@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { InteractiveFolder } from "../../components/folder/InteractiveFolder";
-import { FadeIn } from "../../components/motion/Primitives";
-import { useStore, useIsDay4Complete } from "../../lib/store";
+import { useIsDay4Complete } from "../../lib/store";
 
 export default function Day4Page() {
   const isDay4Complete = useIsDay4Complete();

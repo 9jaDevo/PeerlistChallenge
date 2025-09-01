@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { PeerlistAutofill } from "../../components/autofill/PeerlistAutofill";
-import { FadeIn } from "../../components/motion/Primitives";
-import { useStore, useIsDay7Complete } from "../../lib/store";
+import { useIsDay7Complete } from "../../lib/store";
 
 export default function Day7Page() {
   const isDay7Complete = useIsDay7Complete();

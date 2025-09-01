@@ -259,7 +259,7 @@ function WarpOverlay({ isOpen, originButton, context, onClose, className = "" }:
       content: (
         <div className="space-y-4">
           <div className="bg-white/5 rounded-lg p-4">
-            <h3 className="text-white font-medium mb-3">Today's Events</h3>
+            <h3 className="text-white font-medium mb-3">Today&apos;s Events</h3>
             <div className="space-y-2">
               {[
                 { time: '9:00 AM', event: 'Team Standup', color: 'bg-brand' },
@@ -647,7 +647,7 @@ export function ContextPortal({ className = "" }: ContextPortalProps) {
           🌀 Day 6
         </div>
         <h1 className="text-4xl font-bold text-white mb-4">
-          Warp Overlay ("Context Portal")
+          Warp Overlay (&ldquo;Context Portal&rdquo;)
         </h1>
         <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
           Click any Portal button to experience seamless context switching with 

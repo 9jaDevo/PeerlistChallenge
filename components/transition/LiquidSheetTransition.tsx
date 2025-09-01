@@ -518,7 +518,7 @@ export function LiquidSheetTransition({ className = "" }: LiquidSheetTransitionP
           🌊 Day 3
         </div>
         <h1 className="text-4xl font-bold text-white mb-4">
-          Card→Page Transition ("Liquid Sheet")
+          Card→Page Transition (&ldquo;Liquid Sheet&rdquo;)
         </h1>
         <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
           Experience seamless transitions from project cards to full pages with shared element morphing, 

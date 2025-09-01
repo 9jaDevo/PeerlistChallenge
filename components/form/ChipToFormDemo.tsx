@@ -179,7 +179,7 @@ export function ChipToFormDemo({ className = "" }: ChipToFormDemoProps) {
           Progressive Input Stack
         </h1>
         <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-          Experience the "Chip-to-Form" pattern where compact chips expand into full input fields 
+          Experience the &ldquo;Chip-to-Form&rdquo; pattern where compact chips expand into full input fields 
           with contextual help, then collapse back with success indicators.
         </p>
       </FadeIn>
