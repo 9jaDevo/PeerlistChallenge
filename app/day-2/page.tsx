@@ -18,7 +18,6 @@ const validateOtpCode = async (code: string): Promise<boolean> => {
 };
 
 export default function Day2Page() {
-  const { markDayComplete, preferences } = useStore();
   const isDay2Complete = useIsDay2Complete();
   const [completedCode, setCompletedCode] = useState<string>('');
   const [showSuccess, setShowSuccess] = useState(false);
@@ -184,7 +183,7 @@ export default function Day2Page() {
                   <span className="text-brand text-xs mt-0.5">▸</span>
                   <div>
                     <strong className="text-white">Paste detection:</strong>
-                    <p className="text-gray-400">Paste 6-digit codes like "123456" for quick entry</p>
+                    <p className="text-gray-400">Paste 6-digit codes like &ldquo;123456&rdquo; for quick entry</p>
                   </div>
                 </div>
                 

@@ -211,7 +211,7 @@ interface LiquidSheetProps {
   project: ProjectCard;
   isOpen: boolean;
   onClose: () => void;
-  originRef: React.RefObject<HTMLElement>;
+  originRef: React.RefObject<HTMLElement | null>;
   className?: string;
 }
 
@@ -260,7 +260,7 @@ function LiquidSheet({ project, isOpen, onClose, originRef, className = "" }: Li
   }, [isOpen, onClose]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {isOpen && (
         <motion.div
           ref={sheetRef}
@@ -286,6 +286,15 @@ function LiquidSheet({ project, isOpen, onClose, originRef, className = "" }: Li
           `}
           style={{
             background: `linear-gradient(135deg, ${project.color}10 0%, ${project.color}05 100%)`
+          }}
+          onAnimationComplete={() => {
+            // Ensure card is hidden during transition
+            if (!isOpen) {
+              // Reset any layout issues after exit
+              setTimeout(() => {
+                setMaskCenter({ x: 50, y: 50 });
+              }, 100);
+            }
           }}
         >
           {/* Close Button */}
@@ -495,7 +504,10 @@ export function LiquidSheetTransition({ className = "" }: LiquidSheetTransitionP
 
   // Close project details
   const handleClose = useCallback(() => {
-    setSelectedProject(null);
+    // Add a small delay to ensure smooth transition
+    setTimeout(() => {
+      setSelectedProject(null);
+    }, 100);
     ScreenReader.announce('Closed project details', 'polite');
   }, []);
 
@@ -524,27 +536,41 @@ export function LiquidSheetTransition({ className = "" }: LiquidSheetTransitionP
                 if (el) cardRefs.current[project.id] = el;
               }}
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.15, ...SPRING }}
+              animate={{ 
+                opacity: selectedProject?.id === project.id ? 0 : 1, 
+                y: 0,
+                scale: selectedProject?.id === project.id ? 0.95 : 1
+              }}
+              transition={{ 
+                delay: selectedProject?.id === project.id ? 0 : index * 0.15, 
+                duration: selectedProject?.id === project.id ? 0.3 : 0.5,
+                ...SPRING 
+              }}
               className="group cursor-pointer"
               onClick={() => handleCardClick(project)}
-              whileHover={{ y: -8 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ y: selectedProject?.id === project.id ? 0 : -8 }}
+              whileTap={{ scale: selectedProject?.id === project.id ? 0.95 : 0.98 }}
+              style={{ 
+                pointerEvents: selectedProject?.id === project.id ? 'none' : 'auto',
+                visibility: selectedProject?.id === project.id ? 'hidden' : 'visible'
+              }}
             >
               <div className="bg-surface/10 rounded-2xl border border-white/10 p-6 h-full transition-all duration-300 group-hover:border-white/30 group-hover:shadow-2xl">
                 {/* Card Header */}
                 <div className="flex items-start gap-4 mb-6">
-                  {/* Shared Element - Thumbnail */}
-                  <motion.div
-                    layoutId={`thumbnail-${project.id}`}
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl shadow-lg flex-shrink-0"
-                    style={{ 
-                      backgroundColor: project.color + '20',
-                      border: `2px solid ${project.color}40`
-                    }}
-                  >
-                    {project.thumbnail}
-                  </motion.div>
+                  {/* Shared Element - Thumbnail (only show when not selected) */}
+                  {selectedProject?.id !== project.id && (
+                    <motion.div
+                      layoutId={`thumbnail-${project.id}`}
+                      className="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl shadow-lg flex-shrink-0"
+                      style={{ 
+                        backgroundColor: project.color + '20',
+                        border: `2px solid ${project.color}40`
+                      }}
+                    >
+                      {project.thumbnail}
+                    </motion.div>
+                  )}
 
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-2">
@@ -640,7 +666,7 @@ export function LiquidSheetTransition({ className = "" }: LiquidSheetTransitionP
         project={selectedProject!}
         isOpen={selectedProject !== null}
         onClose={handleClose}
-        originRef={{ current: selectedProject ? cardRefs.current[selectedProject.id] : null }}
+        originRef={{ current: selectedProject ? cardRefs.current[selectedProject.id] || null : null }}
       />
     </div>
   );

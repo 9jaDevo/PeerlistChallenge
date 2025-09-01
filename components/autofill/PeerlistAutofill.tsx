@@ -312,7 +312,7 @@ export function PeerlistAutofill({ className = "" }: PeerlistAutofillProps) {
           🤖 Day 7
         </div>
         <h1 className="text-4xl font-bold text-white mb-4">
-          Peerlist Autofill w/ AI ("Delightful Wait")
+          Peerlist Autofill w/ AI (&ldquo;Delightful Wait&rdquo;)
         </h1>
         <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
           Experience AI-powered project autofill with animated skeletons, thought bubbles, 

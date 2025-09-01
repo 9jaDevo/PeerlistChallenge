@@ -167,7 +167,7 @@ export default function Day1Page() {
                 <p>• Built with Framer Motion spring physics (stiffness: 300, damping: 30)</p>
                 <p>• Accessibility-first design with ARIA labels and keyboard navigation</p>
                 <p>• Reduced motion support through useReducedMotion hook</p>
-                <p>• SVG filters for playful mode "goo" effect</p>
+                <p>• SVG filters for playful mode &ldquo;goo&rdquo; effect</p>
                 <p>• Zustand state management for persona preferences</p>
                 <p>• Performance optimized with willChange and transform-only animations</p>
               </div>

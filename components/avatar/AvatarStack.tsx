@@ -219,7 +219,12 @@ interface AvatarItemProps {
   index: number;
   total: number;
   mode: PersonaMode;
-  modeStyles: any;
+  modeStyles: {
+    borderRadius: string;
+    filter: string;
+    shadow: string;
+    background: string;
+  };
   isHovered: boolean;
   isFocused: boolean;
   isBursting: boolean;

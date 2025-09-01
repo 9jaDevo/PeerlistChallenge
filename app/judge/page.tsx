@@ -149,7 +149,8 @@ export default function JudgePage() {
 
         // Memory usage (if available)
         if ('memory' in performance) {
-          const memory = Math.round((performance as any).memory.usedJSHeapSize / 1048576);
+          // @ts-ignore - memory API is experimental
+          const memory = Math.round((performance as any).memory?.usedJSHeapSize / 1048576 || 0);
           setPerformanceMetrics(prev => ({ ...prev, memory }));
         }
 

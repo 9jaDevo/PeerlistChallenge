@@ -582,7 +582,7 @@ export function InteractiveFolder({ className = "" }: InteractiveFolderProps) {
           <h3 className="text-lg font-semibold text-white mb-4">Folder Features</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-400">
             <div>
-              • <strong className="text-white">Breathing Flap</strong> - Subtle hinge rotation on hover
+              • <strong className="text-white">Paper-Stack</strong> - Stacked file animations with &ldquo;breathing&rdquo; effect
             </div>
             <div>
               • <strong className="text-white">Peek Interaction</strong> - Click/drag to view contents

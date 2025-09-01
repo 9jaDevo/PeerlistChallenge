@@ -256,36 +256,33 @@ export function AdvancedMotionDemo({ className = "" }: AdvancedMotionDemoProps) 
     };
   }, [isPlaying, selectedEffect]);
 
-  // Render effect-specific content
-  const renderEffectDemo = () => {
-    switch (selectedEffect) {
-      case 'parallax':
-        return (
-          <div className="relative h-96 overflow-hidden rounded-xl bg-gradient-to-br from-blue-900/20 to-purple-900/20">
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-brand/10 to-transparent"
-              style={{
-                x: parallaxX,
-                y: parallaxY
-              }}
-            />
-            <motion.div
-              className="absolute top-10 left-10 w-32 h-32 bg-brand/20 rounded-full blur-xl"
-              style={{
-                x: useTransform(mouseX, [0, 800], [-20, 20]),
-                y: useTransform(mouseY, [0, 600], [-15, 15])
-              }}
-            />
-            <motion.div
-              className="absolute bottom-10 right-10 w-24 h-24 bg-ok/20 rounded-full blur-lg"
-              style={{
-                x: useTransform(mouseX, [0, 800], [30, -30]),
-                y: useTransform(mouseY, [0, 600], [20, -20])
-              }}
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <motion.h3 
-                className="text-4xl font-bold text-white"
+  // Parallax Effect Component
+  const ParallaxEffect = () => {
+    const bgX = useTransform(mouseX, [0, 800], [-20, 20]);
+    const bgY = useTransform(mouseY, [0, 600], [-15, 15]);
+    const bg2X = useTransform(mouseX, [0, 800], [30, -30]);
+    const bg2Y = useTransform(mouseY, [0, 600], [20, -20]);
+    
+    return (
+      <div className="relative h-96 overflow-hidden rounded-xl bg-gradient-to-br from-blue-900/20 to-purple-900/20">
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-brand/10 to-transparent"
+          style={{
+            x: parallaxX,
+            y: parallaxY
+          }}
+        />
+        <motion.div
+          className="absolute top-10 left-10 w-32 h-32 bg-brand/20 rounded-full blur-xl"
+          style={{ x: bgX, y: bgY }}
+        />
+        <motion.div
+          className="absolute bottom-10 right-10 w-24 h-24 bg-ok/20 rounded-full blur-lg"
+          style={{ x: bg2X, y: bg2Y }}
+        />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.h3 
+            className="text-4xl font-bold text-white"
                 style={{
                   x: useTransform(mouseX, [0, 800], [-10, 10]),
                   y: useTransform(mouseY, [0, 600], [-5, 5])

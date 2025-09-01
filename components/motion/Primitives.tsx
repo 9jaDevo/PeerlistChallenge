@@ -265,7 +265,8 @@ HoverScale.displayName = 'HoverScale';
 // Smooth transform for continuous animations
 export function useSmoothTransform(value: number, spring: typeof SPRING = SPRING) {
   const shouldReduceMotion = useReducedMotion();
-  return shouldReduceMotion ? value : useSpring(value, spring);
+  const springValue = useSpring(value, spring);
+  return shouldReduceMotion ? value : springValue;
 }
 
 // Stagger transition helper
