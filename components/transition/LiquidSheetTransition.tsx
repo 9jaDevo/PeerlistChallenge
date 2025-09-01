@@ -282,10 +282,12 @@ function LiquidSheet({ project, isOpen, onClose, originRef, className = "" }: Li
           }}
           className={`
             fixed inset-0 z-50 bg-dark overflow-y-auto
+            backdrop-blur-md bg-opacity-95
             ${className}
           `}
           style={{
-            background: `linear-gradient(135deg, ${project.color}10 0%, ${project.color}05 100%)`
+            background: `linear-gradient(135deg, ${project.color}10 0%, ${project.color}05 100%)`,
+            backgroundColor: 'rgba(15, 23, 42, 0.98)' // Ensure solid background
           }}
           onAnimationComplete={() => {
             // Ensure card is hidden during transition
@@ -297,20 +299,23 @@ function LiquidSheet({ project, isOpen, onClose, originRef, className = "" }: Li
             }
           }}
         >
+          {/* Additional backdrop for extra coverage */}
+          <div className="absolute inset-0 bg-dark/90 backdrop-blur-sm" />
+          
           {/* Close Button */}
           <motion.button
             initial={{ opacity: 0 }}
             animate={{ opacity: showContent ? 1 : 0 }}
             transition={{ delay: showContent ? 0.2 : 0 }}
             onClick={onClose}
-            className="fixed top-6 right-6 z-60 w-12 h-12 bg-surface/80 backdrop-blur-sm rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-surface/90 transition-colors"
+            className="fixed top-6 right-6 z-[60] w-12 h-12 bg-surface/80 backdrop-blur-sm rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-surface/90 transition-colors"
             aria-label="Close project details"
           >
             ✕
           </motion.button>
 
           {/* Hero Section with Shared Element */}
-          <div className="relative min-h-screen flex flex-col">
+          <div className="relative min-h-screen flex flex-col z-10">
             {/* Hero Background */}
             <div 
               className="absolute inset-0 opacity-10"
@@ -320,7 +325,7 @@ function LiquidSheet({ project, isOpen, onClose, originRef, className = "" }: Li
             />
 
             {/* Content */}
-            <div className="relative z-10 flex-1 p-6 md:p-12">
+            <div className="relative z-20 flex-1 p-6 md:p-12">
               <div className="max-w-4xl mx-auto">
                 {/* Hero Header */}
                 <motion.div 
