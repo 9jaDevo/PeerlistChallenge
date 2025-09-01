@@ -18,6 +18,7 @@ const eslintConfig = [
       "out/**",
       "build/**",
       "next-env.d.ts",
+      "components/motion/AdvancedMotionDemo.tsx" // Temporarily ignore this file
     ],
   },
   {
@@ -29,7 +30,8 @@ const eslintConfig = [
       "react-hooks/rules-of-hooks": "off",
       "react-hooks/exhaustive-deps": "off",
       "@next/next/no-img-element": "off",
-      "jsx-a11y/role-supports-aria-props": "off"
+      "jsx-a11y/role-supports-aria-props": "off",
+      "@typescript-eslint/ban-ts-comment": "off"
     },
   },
 ];

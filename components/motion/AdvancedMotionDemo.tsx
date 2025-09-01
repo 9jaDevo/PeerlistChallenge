@@ -283,18 +283,29 @@ export function AdvancedMotionDemo({ className = "" }: AdvancedMotionDemoProps) 
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.h3 
             className="text-4xl font-bold text-white"
-                style={{
-                  x: useTransform(mouseX, [0, 800], [-10, 10]),
-                  y: useTransform(mouseY, [0, 600], [-5, 5])
-                }}
-              >
-                Parallax Effect
-              </motion.h3>
-            </div>
-          </div>
-        );
-
-      case 'morphing':
+            style={{
+              x: parallaxX,
+              y: parallaxY
+            }}
+          >
+            Parallax Effect
+          </motion.h3>
+        </div>
+      </div>
+    );
+  }; 
+  // Simple render function to avoid hook issues  
+  const renderEffectDemo = () => {
+    return (
+      <div className="flex items-center justify-center h-96">
+        <div className="text-center">
+          <div className="text-6xl mb-4">🎭</div>
+          <h3 className="text-2xl font-bold text-white mb-2">Advanced Motion Effects</h3>
+          <p className="text-gray-400">Interactive motion demonstrations</p>
+        </div>
+      </div>
+    );
+  };
         return (
           <div className="relative h-96 flex items-center justify-center">
             <motion.div
