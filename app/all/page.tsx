@@ -53,10 +53,10 @@ export default function AllPage() {
     },
     {
       day: 8,
-      title: "Identity Board Synthesis",
+      title: "Coming Soon",
       href: "/day-8",
-      description: "Complex identity dashboard with dynamic data visualization and interactions",
-      tags: ["Dashboard", "Data Viz", "Complex"]
+      description: "Stay tuned for the final challenge featuring advanced interaction patterns and dynamic UI components",
+      tags: ["Coming Soon", "Advanced", "Interactive"]
     }
   ]
 
